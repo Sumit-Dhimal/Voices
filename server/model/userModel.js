@@ -11,11 +11,11 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        lowecase: true,
+        lowercase: true,
     },
     password: {
         type: String,
-        select: false, // never return password by default
+        //select: false, // never return password by default
         // minlength: 6
         //required: true oauth doesn't need password
     },
@@ -37,10 +37,11 @@ const userSchema = mongoose.Schema({
 })
 
 
-userSchema.pre("save", async function (next) {
+userSchema.pre("save", async function () {
     // if password field isn't modifed skip hashing
-    if(!this.isModified("password")) {
-        return next();
+    // skip if no password (Google OAuth users)
+    if(!this.password || !this.isModified("password")) {
+        return;
     }
     
     const salt = await bcrypt.genSalt(10);

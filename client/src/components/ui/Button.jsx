@@ -11,7 +11,7 @@ const Button = ({
   let styles = "bg-blue-600 text-white hover:bg-blue-700";
 
   if(variant === "secondary") {
-    styles = "bg-emerald-600 text-white hover:bg-emerald-700";
+    styles = "bg-gray-50 text-black hover:bg-gray-100 border border-1";
   } else if(variant === "danger") {
     styles = "bg-red-600 text-white hover:bg-red-700";
   }

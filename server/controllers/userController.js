@@ -79,18 +79,28 @@ const loginUser = async(req, res, next) => {
 // @route       POST    /api/users/logout
 // @access      Public
 const logoutUser = (req, res) => {
+    // clear JWT cookie
     res.cookie('jwt', '', {
         httpOnly: true,
-        expires: new Date(0)
+        expires: new Date(0),
+        sameSite: "Lax",
+        secure: process.env.NODE_ENV === "production"
     })
 
-    res.status(300).json({
+    res.status(200).json({
         message: "Logout successfull"
     })
 }
 
+
+// @router      GET     api/users/me
+// @access      Private
+const checkLoginStatus = (req, res) => {
+    res.json(req.user);
+}
 export {
     registerUser,
     loginUser,
-    logoutUser
+    logoutUser,
+    checkLoginStatus
 }

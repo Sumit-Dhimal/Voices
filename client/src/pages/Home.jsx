@@ -1,6 +1,23 @@
+import { useEffect } from "react";
 import Button from "../components/ui/Button";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import Loader from "../components/ui/Loader";
 
 const Home = () => {
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+
+   useEffect(() => {
+    if (!loading && user) {
+      navigate("/dashboard"); // safe redirect
+    }
+  }, [user, loading, navigate]);
+
+  if(loading) {
+    return <Loader />
+  }
+
   return (
     <div className="mt-32">
       <div className="max-w-7xl mx-auto">

@@ -1,7 +1,7 @@
 
 // This is a "catch-all" that runs only if no route matched above it.
 const notFound = (req, res, next) => {
-    const error = new Error(`Notfound - ${req.originalurl}`);
+    const error = new Error(`Notfound - ${req.originalUrl}`);
     res.status(404); // 404 = notfound
     next(error);
 }

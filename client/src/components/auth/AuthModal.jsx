@@ -1,42 +1,46 @@
-import { useState } from "react";
-
+import { useAuth } from "../../context/AuthContext";
 import Modal from "../layout/Modal";
-import LoginForm from "../auth/LoginForm";
-import SignupForm from "../auth/SignupForm";
+import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
 
-const AuthModal = ({isOpen, onClose}) => {
-    const [type, setType] = useState("login");
+const AuthModal = () => {
+    const {
+        isAuthModalOpen,
+        closeAuthModal,
+        authType,
+        openLogin,
+        openSignup,
+    } = useAuth();
 
-    if(!isOpen) return null;
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-        {type === "login"? <LoginForm /> : <SignupForm />};
-
-        <p className="text-sm text-center">
-            {
-                type === "login"? (
-                    <>
-                        Don't have an account? {" "}
-                        <button
-                            onClick={() => setType("signup")}
-                            className="underline hover:text-blue-500 cursor-pointer"
-                        >
-                            Sign Up
-                        </button>
-                    </>
-                ) : (
-                    <>
-                        Already have an account? {" "}
-                        <button 
-                            onClick={() => setType("login")}
-                            className="underline hover:text-blue-500 cursor-pointer"
-                        >
-                            Login
-                        </button>
-                    </>
-                )
-            }
-        </p>
+    <Modal isOpen={isAuthModalOpen} onClose={closeAuthModal}>
+        {authType === "login"? (
+            <>
+                <LoginForm />
+                <p className="text-sm text-center mt-2">
+                    Don't have an account? {" "}
+                    <button
+                        onClick={openSignup}
+                        className="underline hover:text-blue-500 cursor-pointer"
+                    >
+                        Sign Up
+                    </button>
+                </p>
+            </>
+        ) : (
+            <>
+                <SignupForm />
+                <p className="text-sm text-center mt-2">
+                    Already have an account? {" "}
+                    <button 
+                        onClick={openLogin}
+                        className="underline hover:text-blue-500 cursor-pointer"
+                    >
+                        Login
+                    </button>
+                </p>
+            </>
+        )}
     </Modal>
   )
 }

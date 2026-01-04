@@ -1,5 +1,5 @@
 @import "tailwindcss";
 
 .navLink {
-    @apply  font-medium text-gray-800 hover:text-black hidden sm:block sm:text-sm;
+    @apply cursor-pointer font-medium text-gray-800 hover:text-black hidden sm:block sm:text-sm;
 }
