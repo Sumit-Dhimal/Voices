@@ -3,6 +3,7 @@ import 'dotenv/config'; // IMP use this or otherwise there will be problem with 
 import express, { urlencoded } from "express";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/userRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
 import connectDB from "./config/db.js";
 import {notFound, errorHandler} from "./middleware/errorMiddleware.js";
 import passport from 'passport';
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 
 // routes
 app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
 
 // error handling middlware
 app.use(notFound);
