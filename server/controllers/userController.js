@@ -96,8 +96,18 @@ const logoutUser = (req, res) => {
 // @router      GET     api/users/me
 // @access      Private
 const checkLoginStatus = (req, res) => {
-    res.json(req.user);
+    if(!req.user) {
+        return res.status(401).json({user: null});
+    }
+
+    res.status(200).json({     
+        _id: req.user._id,
+        username: req.user.username,
+        email: req.user.email,
+        avatar: req.user.avatar,
+    })
 }
+
 export {
     registerUser,
     loginUser,

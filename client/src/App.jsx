@@ -5,7 +5,7 @@ import AuthModal from './components/auth/AuthModal';
 const App = () => {
   
   return (
-    <div className='pt-8 px-5 h-screen bg-[#EFECE3]'>
+    <div className='pt-4 px-5 h-screen bg-white'>
       <Navbar/>
       <AuthModal />
       <main>

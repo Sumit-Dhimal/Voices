@@ -3,6 +3,8 @@ import ProtectedRoute from "../components/layout/ProtectedRoute";
 import App from "../App";
 import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
+import Profile from "../pages/Profile";
+import CreateBlog from "../pages/blog/CreateBlog";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +20,21 @@ const router = createBrowserRouter([
                     <ProtectedRoute>
                         <Dashboard />
                     </ProtectedRoute>)
+            },
+            {
+                path: "profile",
+                element: (
+                    <ProtectedRoute>
+                        <Profile />
+                    </ProtectedRoute>
+                )
+            }, {
+                path: "createBlog", 
+                element: (
+                    <ProtectedRoute>
+                        <CreateBlog />
+                    </ProtectedRoute>
+                )
             }
         ]
     }
