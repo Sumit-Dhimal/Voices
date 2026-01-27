@@ -42,3 +42,4 @@ A blogging platform where people can share thoughts, ideas, and share their own 
     - Moderate comments
     - Role-based access control (Admin/Author/Reader)
     - Report inappropriate content
+

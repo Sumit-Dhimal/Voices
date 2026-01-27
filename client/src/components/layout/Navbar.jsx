@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {Link, NavLink} from "react-router-dom";
-import "../../styles/App.css";
+import "../../index.css";
 import Button from "../ui/Button";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
